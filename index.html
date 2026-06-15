@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakshyyy's Magical Birthday ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ── SF Pro via system font stack (renders true SF Pro on Apple devices) ── */
+@supports (font: -apple-system-body) {
+  body { font: -apple-system-body; }
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+/* ─── ROOT TOKENS ─── */
+:root {
+  --font-body:    -apple-system, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Cinzel Decorative", serif;
+  --font-sub:     "Cinzel", serif;
+
+  /* Default (Gryffindor) — overridden per house */
+  --accent:       #AE0001;
+  --accent-soft:  #F5EAEA;
+  --accent-mid:   #C62B2B;
+  --gold:         #C9A84C;
+  --gold-light:   #F0C050;
+  --bg-hero:      linear-gradient(160deg, #FFF8F8 0%, #FFF0EE 50%, #FFE8E4 100%);
+  --bg-section-a: #FFFFFF;
+  --bg-section-b: #FFF8F8;
+  --bg-section-c: linear-gradient(160deg, #FFF0EE 0%, #FFF8F8 100%);
+  --border-color: rgba(174,0,1,0.12);
+  --text-primary: #1A0A0A;
+  --text-muted:   #7A5A58;
+  --card-bg:      linear-gradient(135deg,#FFFAF9,#FFF3F0);
+  --divider-color:rgba(174,0,1,0.18);
+  --sparkle-color:#F0C050;
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ─── HOUSE THEMES ─── */
+.house-gryffindor {
+  --accent:#AE0001; --accent-soft:#FFF0EE; --accent-mid:#C62B2B;
+  --gold:#C9A84C; --gold-light:#F0C050;
+  --bg-hero:linear-gradient(160deg,#FFF8F8 0%,#FFF0EE 50%,#FFE8E4 100%);
+  --bg-section-a:#FFFFFF; --bg-section-b:#FFF8F8;
+  --bg-section-c:linear-gradient(160deg,#FFF0EE 0%,#FFF8F8 100%);
+  --border-color:rgba(174,0,1,0.12); --text-primary:#1A0A0A; --text-muted:#7A5A58;
+  --card-bg:linear-gradient(135deg,#FFFAF9,#FFF3F0); --divider-color:rgba(174,0,1,0.18);
+}
+.house-slytherin {
+  --accent:#1A6B3A; --accent-soft:#EDF7F1; --accent-mid:#228B52;
+  --gold:#8FB8A8; --gold-light:#A8D5BE;
+  --bg-hero:linear-gradient(160deg,#F5FBF8 0%,#EBF7F0 50%,#DCF0E6 100%);
+  --bg-section-a:#FFFFFF; --bg-section-b:#F5FBF8;
+  --bg-section-c:linear-gradient(160deg,#EBF7F0 0%,#F5FBF8 100%);
+  --border-color:rgba(26,107,58,0.12); --text-primary:#0A1A10; --text-muted:#3D6B52;
+  --card-bg:linear-gradient(135deg,#F5FBF8,#EBF7F0); --divider-color:rgba(26,107,58,0.18);
+  --sparkle-color:#A8D5BE;
+}
+.house-ravenclaw {
+  --accent:#162558; --accent-soft:#EEF1FA; --accent-mid:#253880;
+  --gold:#8B6914; --gold-light:#B8922A;
+  --bg-hero:linear-gradient(160deg,#F5F7FC 0%,#EDF0F9 50%,#E0E6F5 100%);
+  --bg-section-a:#FFFFFF; --bg-section-b:#F5F7FC;
+  --bg-section-c:linear-gradient(160deg,#EDF0F9 0%,#F5F7FC 100%);
+  --border-color:rgba(22,37,88,0.1); --text-primary:#0A0D1A; --text-muted:#4A5278;
+  --card-bg:linear-gradient(135deg,#F5F7FC,#EDF0F9); --divider-color:rgba(22,37,88,0.15);
+  --sparkle-color:#B8922A;
+}
+.house-hufflepuff {
+  --accent:#C49A00; --accent-soft:#FDF9EC; --accent-mid:#D4A800;
+  --gold:#A07800; --gold-light:#C8A000;
+  --bg-hero:linear-gradient(160deg,#FEFCF0 0%,#FDF8E2 50%,#FBF3CE 100%);
+  --bg-section-a:#FFFFFF; --bg-section-b:#FEFCF0;
+  --bg-section-c:linear-gradient(160deg,#FDF8E2 0%,#FEFCF0 100%);
+  --border-color:rgba(196,154,0,0.15); --text-primary:#1A1500; --text-muted:#6B5A00;
+  --card-bg:linear-gradient(135deg,#FEFCF0,#FDF8E2); --divider-color:rgba(196,154,0,0.2);
+  --sparkle-color:#C8A000;
+}
+
+/* ─── BASE ─── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: #FAFAF8;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.7s var(--ease-smooth), color 0.7s var(--ease-smooth);
+}
+
+/* ─── CANDLES ─── */
+.candle-layer {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.candle {
+  position: absolute; bottom: -40px;
+  display: flex; flex-direction: column; align-items: center;
+  animation: floatCandle linear infinite;
+  will-change: transform, opacity;
+}
+.candle-body {
+  width: 6px; height: 26px;
+  background: linear-gradient(180deg, #fffbea 0%, #f5deb3 55%, #d4a020 100%);
+  border-radius: 3px 3px 2px 2px;
+}
+.candle-flame {
+  width: 9px; height: 15px;
+  background: radial-gradient(ellipse at 50% 75%, #fff9b0 0%, #ffd700 38%, #ff8c00 72%, transparent 100%);
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  margin-bottom: -2px;
+  animation: flicker 2.1s ease-in-out infinite alternate;
+  filter: blur(0.4px);
+  box-shadow: 0 0 10px 3px rgba(255,180,0,0.35), 0 0 20px 5px rgba(255,120,0,0.12);
+  will-change: transform;
+}
+@keyframes flicker {
+  0%   { transform: scaleX(1)    scaleY(1)    rotate(-1.5deg); opacity: 1; }
+  25%  { transform: scaleX(0.88) scaleY(1.1)  rotate(2deg); }
+  55%  { transform: scaleX(1.08) scaleY(0.93) rotate(-0.8deg); }
+  80%  { transform: scaleX(0.94) scaleY(1.06) rotate(1.2deg); }
+  100% { transform: scaleX(1.02) scaleY(0.98) rotate(-0.5deg); opacity: 0.9; }
+}
+@keyframes floatCandle {
+  0%   { transform: translateY(0)  translateX(0);                opacity: 0; }
+  6%   { opacity: 0.5; }
+  88%  { opacity: 0.4; }
+  100% { transform: translateY(-115vh) translateX(var(--drift,15px)); opacity: 0; }
+}
+
+/* ─── SPARKLES ─── */
+.sparkle {
+  position: fixed; pointer-events: none; z-index: 1;
+  animation: sparkleFade 1.8s var(--ease-out) forwards;
+  will-change: transform, opacity;
+}
+.sparkle::before { content: '✦'; font-size: var(--sz, 12px); color: var(--sparkle-color, #F0C050); }
+@keyframes sparkleFade {
+  0%   { opacity: 1; transform: scale(0) rotate(0deg); }
+  45%  { opacity: 1; transform: scale(1) rotate(160deg); }
+  100% { opacity: 0; transform: scale(0.4) rotate(320deg) translateY(-18px); }
+}
+
+/* ─── HOUSE SELECTOR OVERLAY ─── */
+#houseSelectorOverlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: radial-gradient(ellipse at 50% 30%, #161020 0%, #080810 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 40px;
+  animation: overlayIn 0.6s var(--ease-out) both;
+}
+@keyframes overlayIn { from { opacity:0; } to { opacity:1; } }
+
+.selector-star-field {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.selector-star {
+  position: absolute; width: 2px; height: 2px;
+  background: #fff; border-radius: 50%;
+  animation: starPulse var(--dur, 3s) ease-in-out infinite;
+  opacity: var(--op, 0.4);
+}
+@keyframes starPulse { 0%,100%{opacity:var(--op,0.4)} 50%{opacity:0.9} }
+
+.selector-heading {
+  font-family: var(--font-heading);
+  color: #C9A84C;
+  font-size: clamp(1.3rem, 4vw, 2.2rem);
+  text-align: center; letter-spacing: 0.04em; line-height: 1.4;
+  padding: 0 24px; position: relative; z-index: 1;
+  animation: fadeInUp 0.8s var(--ease-smooth) 0.2s both;
+}
+.selector-sub {
+  color: #c5b99a; font-family: var(--font-body);
+  font-size: 0.92rem; text-align: center; opacity: 0.75; margin-top: -24px;
+  animation: fadeInUp 0.8s var(--ease-smooth) 0.4s both; position: relative; z-index:1;
+}
+
+.house-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  padding: 0 24px; max-width: 560px; width: 100%; position: relative; z-index: 1;
+  animation: fadeInUp 0.8s var(--ease-smooth) 0.55s both;
+}
+.house-btn {
+  border: none; border-radius: 18px; padding: 24px 16px;
+  cursor: pointer; transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-smooth), opacity 0.2s;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  font-family: var(--font-body); position: relative; overflow: hidden;
+}
+.house-btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent 60%);
+  border-radius: inherit; pointer-events: none;
+}
+.house-btn:hover { transform: translateY(-6px) scale(1.04); }
+.house-btn:active { transform: translateY(-2px) scale(0.99); }
+.house-btn .h-emoji  { font-size: 2.5rem; transition: transform 0.3s var(--ease-spring); }
+.house-btn:hover .h-emoji { transform: scale(1.15) rotate(-5deg); }
+.house-btn .h-name   { font-family: var(--font-sub); font-weight: 700; font-size: 1rem; letter-spacing: 0.07em; }
+.house-btn .h-words  { font-size: 0.7rem; opacity: 0.72; letter-spacing: 0.03em; }
+
+.btn-gryffindor { background: linear-gradient(150deg, #5a0001, #AE0001, #7a0000); color: #FFD700;
+  box-shadow: 0 8px 30px rgba(174,0,1,0.4); }
+.btn-slytherin  { background: linear-gradient(150deg, #0f3018, #1A6B3A, #163026); color: #C0D8C8;
+  box-shadow: 0 8px 30px rgba(26,107,58,0.4); }
+.btn-ravenclaw  { background: linear-gradient(150deg, #0a1235, #162558, #1a2d6b); color: #D4A843;
+  box-shadow: 0 8px 30px rgba(22,37,88,0.45); }
+.btn-hufflepuff { background: linear-gradient(150deg, #9a7200, #C49A00, #e8c000); color: #2a1f00;
+  box-shadow: 0 8px 30px rgba(196,154,0,0.4); }
+
+/* ─── SORTING HAT OVERLAY ─── */
+#sortingOverlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: radial-gradient(ellipse at 50% 30%, #161020 0%, #060610 100%);
+  display: none; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+}
+.sorting-hat-wrap {
+  animation: hatEntry 0.7s var(--ease-spring) both;
+  will-change: transform;
+}
+@keyframes hatEntry { from { transform: translateY(-60px) rotate(-8deg); opacity:0; } to { transform:none; opacity:1; } }
+.sorting-hat-svg { width: min(260px, 68vw); animation: hatSway 2.5s ease-in-out infinite; }
+@keyframes hatSway {
+  0%,100% { transform: rotate(-2deg) translateY(0); }
+  50%      { transform: rotate(2deg) translateY(-8px); }
+}
+.sorting-sparkles-row { display: flex; gap: 16px; font-size: 1.5rem; }
+.sort-sparkle { animation: sparkleOrbit 3s ease-in-out infinite; }
+.sort-sparkle:nth-child(2) { animation-delay: 1s; }
+.sort-sparkle:nth-child(3) { animation-delay: 2s; }
+@keyframes sparkleOrbit { 0%,100%{transform:scale(0.8)opacity 0.5} 50%{transform:scale(1.2);opacity:1} }
+
+#sortingText {
+  font-family: var(--font-heading);
+  color: #C9A84C; font-size: clamp(1rem, 3.5vw, 1.5rem);
+  text-align: center; padding: 0 28px; line-height: 1.55; min-height: 2.5em;
+}
+#sortingSubText {
+  color: #c8bba0; font-size: 0.88rem; text-align: center;
+  padding: 0 28px; opacity: 0; line-height: 1.6;
+  transition: opacity 0.6s var(--ease-smooth);
+}
+#sortingSubText.show { opacity: 1; }
+#enterBtn {
+  background: linear-gradient(135deg, #C9A84C, #F0C050);
+  color: #1a1100; border: none; border-radius: 50px; padding: 13px 40px;
+  font-family: var(--font-sub); font-weight: 700; font-size: 0.92rem;
+  cursor: pointer; letter-spacing: 0.06em;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s var(--ease-smooth), transform 0.5s var(--ease-smooth), box-shadow 0.25s;
+  will-change: transform;
+}
+#enterBtn.show { opacity: 1; transform: translateY(0); }
+#enterBtn:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 10px 28px rgba(201,168,76,0.5); }
+#enterBtn:active { transform: scale(0.97); }
+
+/* ─── PAGE CONTENT ─── */
+.page-content { position: relative; z-index: 2; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 24px;
+  background: var(--bg-hero);
+  position: relative; overflow: hidden;
+  transition: background 0.8s var(--ease-smooth);
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 38% at 18% 25%, rgba(255,255,255,0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 32% at 82% 72%, rgba(255,255,255,0.35) 0%, transparent 70%);
+}
+
+.hero-icon {
+  font-size: 3.8rem; margin-bottom: 4px;
+  animation: iconFloat 5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes iconFloat {
+  0%,100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-16px) rotate(4deg); }
+}
+.hero-eyebrow {
+  font-family: var(--font-sub); font-size: 0.7rem; letter-spacing: 0.28em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 18px;
+  opacity: 0; animation: fadeInUp 1s var(--ease-smooth) 0.2s forwards;
+}
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 7.5vw, 5.5rem);
+  font-weight: 700; color: var(--text-primary);
+  line-height: 1.08; margin-bottom: 16px; letter-spacing: -0.01em;
+  opacity: 0; animation: fadeInUp 1s var(--ease-smooth) 0.45s forwards;
+}
+.hero-title .name-accent { color: var(--accent); }
+.hero-subtitle {
+  font-size: clamp(0.92rem, 2vw, 1.15rem);
+  color: var(--text-muted); max-width: 540px; line-height: 1.8;
+  opacity: 0; animation: fadeInUp 1s var(--ease-smooth) 0.7s forwards;
+  margin-bottom: 36px; font-weight: 400;
+}
+.house-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: rgba(255,255,255,0.88);
+  border: 1.5px solid var(--border-color);
+  border-radius: 50px; padding: 9px 22px;
+  font-size: 0.82rem; color: var(--text-muted);
+  font-family: var(--font-sub); letter-spacing: 0.05em;
+  opacity: 0; animation: fadeInUp 1s var(--ease-smooth) 0.95s forwards;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: background 0.6s, border-color 0.6s;
+}
+
+/* ─── SECTION SHARED ─── */
+.section-wrap {
+  padding: 88px 24px;
+  text-align: center;
+  transition: background 0.8s var(--ease-smooth);
+}
+.section-wrap.alt-bg { background: var(--bg-section-b); }
+.section-wrap.grad-bg { background: var(--bg-section-c); }
+.section-wrap.white-bg { background: var(--bg-section-a); }
+
+.section-eyebrow {
+  font-family: var(--font-sub); font-size: 0.68rem; letter-spacing: 0.26em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+  transition: color 0.6s;
+}
+.section-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--text-primary);
+  margin-bottom: 12px; line-height: 1.2;
+  transition: color 0.6s;
+}
+.section-sub {
+  font-size: 0.93rem; color: var(--text-muted); max-width: 480px;
+  margin: 0 auto 52px; line-height: 1.75; font-weight: 400;
+  transition: color 0.6s;
+}
+
+/* ─── DIVIDER ─── */
+.magic-divider {
+  text-align: center; padding: 24px 0;
+  color: var(--divider-color); font-size: 1.1rem; letter-spacing: 0.5em;
+  transition: color 0.6s;
+}
+
+/* ─── COUNTDOWN ─── */
+.countdown-grid {
+  display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+  max-width: 580px; margin: 0 auto;
+}
+.countdown-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 22px; padding: 30px 22px;
+  min-width: 116px; flex: 1;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.3s, background 0.6s, border-color 0.6s;
+  will-change: transform;
+}
+.countdown-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(0,0,0,0.09); }
+.countdown-number {
+  font-family: var(--font-heading); font-size: clamp(2.2rem, 7vw, 3.4rem);
+  font-weight: 700; line-height: 1;
+  color: var(--accent);
+  transition: color 0.6s;
+}
+.countdown-label {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 9px; font-family: var(--font-sub);
+  transition: color 0.6s;
+}
+.birthday-msg {
+  font-family: var(--font-heading); font-size: clamp(1.3rem, 4vw, 2rem);
+  color: var(--accent); animation: glow 2.2s ease-in-out infinite; margin: 24px 0;
+}
+@keyframes glow { 0%,100%{opacity:1} 50%{opacity:0.65} }
+
+/* ─── LETTER ─── */
+.hedwig-wrap { margin: 10px 0 0; }
+.hedwig-fly {
+  font-size: 3.2rem; display: inline-block;
+  animation: hedwigFly 6s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes hedwigFly {
+  0%   { transform: translateX(-36px) translateY(0)    rotate(-6deg); }
+  28%  { transform: translateX(8px)   translateY(-22px) rotate(4deg); }
+  55%  { transform: translateX(36px)  translateY(-10px) rotate(-3deg); }
+  80%  { transform: translateX(14px)  translateY(-4px)  rotate(2deg); }
+  100% { transform: translateX(-36px) translateY(0)    rotate(-6deg); }
+}
+
+.letter-wrapper {
+  max-width: 580px; margin: 44px auto 0;
+  cursor: pointer; position: relative;
+  transition: transform 0.4s var(--ease-smooth), filter 0.4s;
+  will-change: transform;
+}
+.letter-wrapper:hover { transform: translateY(-4px) scale(1.008); filter: drop-shadow(0 24px 40px rgba(0,0,0,0.13)); }
+
+.scroll-visual {
+  background: linear-gradient(155deg, #f8e8c0 0%, #ead8a0 45%, #d4b870 100%);
+  border-radius: 18px;
+  padding: 52px 44px;
+  box-shadow:
+    0 2px 0 #c0982a,
+    0 5px 0 #a87820,
+    0 24px 60px rgba(0,0,0,0.14),
+    inset 0 1px 0 rgba(255,255,255,0.55),
+    inset 0 -1px 0 rgba(0,0,0,0.07);
+  position: relative;
+  border: 1px solid rgba(180,140,55,0.38);
+}
+.scroll-rod {
+  position: absolute; left: -10px; right: -10px; height: 30px;
+  background: linear-gradient(180deg, #d8a840 0%, #a07020 50%, #c89030 100%);
+  border-radius: 15px;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.22);
+}
+.scroll-rod.top    { top:    -14px; }
+.scroll-rod.bottom { bottom: -14px; }
+.scroll-rod::before, .scroll-rod::after {
+  content: ''; position: absolute; top: 50%; transform: translateY(-50%);
+  width: 30px; height: 30px; background: inherit; border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.24);
+}
+.scroll-rod::before { left:  -11px; }
+.scroll-rod::after  { right: -11px; }
+
+.letter-locked-content {
+  display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 20px 0;
+}
+.letter-lock-icon { font-size: 3.2rem; animation: lockBob 3s ease-in-out infinite; }
+@keyframes lockBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+.letter-lock-title {
+  font-family: var(--font-heading); font-size: 1.25rem; color: #4a3000; font-weight: 700;
+}
+.letter-lock-desc { font-size: 0.88rem; color: #7a5820; line-height: 1.75; max-width: 340px; }
+.letter-delivery-date {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.55); border: 1px solid rgba(180,140,60,0.38);
+  border-radius: 50px; padding: 8px 20px; font-size: 0.8rem;
+  color: #5a3a0a; font-family: var(--font-sub); letter-spacing: 0.04em;
+}
+
+.letter-open-content { display: none; text-align: left; animation: letterReveal 0.8s var(--ease-smooth) both; }
+@keyframes letterReveal {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:none; }
+}
+.letter-open-title {
+  font-family: var(--font-heading); font-size: 1.4rem;
+  color: #2a1800; text-align: center; margin-bottom: 24px;
+}
+.letter-body {
+  font-family: var(--font-sub); color: #3a2800;
+  font-size: 0.9rem; line-height: 2.1; white-space: pre-line;
+}
+.letter-signature {
+  text-align: right; margin-top: 28px;
+  font-family: var(--font-heading); color: #6a4010; font-size: 0.88rem;
+}
+
+/* ─── PATIENCE TOAST ─── */
+.patience-toast {
+  position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%) translateY(12px);
+  background: #1a1100; color: #F0C050; padding: 14px 30px;
+  border-radius: 50px; font-family: var(--font-sub); font-size: 0.87rem;
+  letter-spacing: 0.04em; z-index: 9998; opacity: 0; pointer-events: none; white-space: nowrap;
+  border: 1px solid rgba(201,168,76,0.35);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.28);
+  transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
+  will-change: transform, opacity;
+}
+.patience-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ─── LOCAL VIDEO PLAYER ─── */
+.video-player-wrap {
+  max-width: 780px; margin: 44px auto 0;
+  border-radius: 22px; overflow: hidden;
+  box-shadow: 0 20px 70px rgba(0,0,0,0.13);
+  border: 1.5px solid var(--border-color);
+  background: #000;
+  position: relative;
+  transition: border-color 0.6s, box-shadow 0.6s;
+}
+.video-player-wrap video {
+  width: 100%; display: block; aspect-ratio: 16/9;
+  background: #000;
+}
+/* Custom controls bar */
+.video-controls {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.82) 0%, transparent 100%);
+  padding: 28px 20px 16px;
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0; transition: opacity 0.35s var(--ease-smooth);
+}
+.video-player-wrap:hover .video-controls { opacity: 1; }
+.video-player-wrap.paused .video-controls { opacity: 1; }
+
+.vc-btn {
+  background: none; border: none; cursor: pointer; color: #fff;
+  padding: 4px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s var(--ease-spring), opacity 0.2s;
+  opacity: 0.85;
+}
+.vc-btn:hover { transform: scale(1.18); opacity: 1; }
+.vc-btn svg { width: 22px; height: 22px; fill: currentColor; }
+
+.vc-progress { flex: 1; height: 4px; background: rgba(255,255,255,0.25); border-radius: 4px; cursor: pointer; position: relative; }
+.vc-progress-fill {
+  height: 100%; background: var(--gold-light); border-radius: 4px;
+  width: 0%; transition: width 0.1s linear;
+  transition: background 0.6s;
+}
+.vc-progress:hover .vc-progress-fill { filter: brightness(1.15); }
+.vc-time { color: rgba(255,255,255,0.8); font-size: 0.74rem; font-family: var(--font-sub); letter-spacing: 0.04em; white-space: nowrap; }
+.vc-vol { display: flex; align-items: center; gap: 6px; }
+.vc-vol-slider { width: 60px; height: 3px; cursor: pointer; accent-color: var(--gold-light); }
+
+.video-big-play {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  pointer-events: none; opacity: 0; transition: opacity 0.3s;
+}
+.video-player-wrap.paused .video-big-play { opacity: 1; pointer-events: auto; cursor: pointer; }
+.big-play-circle {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: transform 0.3s var(--ease-spring), background 0.2s;
+}
+.big-play-circle:hover { transform: scale(1.12); background: rgba(0,0,0,0.72); }
+.big-play-circle svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+
+.video-drop-zone {
+  max-width: 560px; margin: 28px auto 0;
+  border: 2px dashed var(--border-color);
+  border-radius: 18px; padding: 32px 28px;
+  text-align: center; cursor: pointer;
+  background: var(--accent-soft);
+  transition: border-color 0.3s, background 0.3s, transform 0.3s var(--ease-smooth);
+  will-change: transform;
+}
+.video-drop-zone:hover, .video-drop-zone.drag-over {
+  border-color: var(--accent); background: rgba(255,255,255,0.7);
+  transform: scale(1.01);
+}
+.video-drop-zone input[type=file] { display: none; }
+.drop-icon { font-size: 2.4rem; margin-bottom: 10px; }
+.drop-title { font-family: var(--font-sub); font-size: 0.92rem; color: var(--text-primary); margin-bottom: 6px; font-weight: 600; }
+.drop-sub   { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+.drop-btn {
+  display: inline-block; margin-top: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff; border: none; border-radius: 50px; padding: 10px 26px;
+  font-family: var(--font-sub); font-size: 0.8rem; cursor: pointer;
+  letter-spacing: 0.06em; transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+}
+.drop-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+.video-filename {
+  margin-top: 12px; font-size: 0.78rem; color: var(--accent);
+  font-family: var(--font-sub); letter-spacing: 0.04em; opacity: 0;
+  transition: opacity 0.4s;
+}
+.video-filename.show { opacity: 1; }
+
+/* ─── GALLERY ─── */
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px; max-width: 1100px; margin: 44px auto 0;
+}
+.gallery-item {
+  border-radius: 18px; overflow: hidden; aspect-ratio: 4/3;
+  position: relative; cursor: pointer;
+  background: var(--card-bg);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.35s var(--ease-smooth);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  border: 1px solid var(--border-color);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  will-change: transform;
+}
+.gallery-item:hover { transform: scale(1.035) translateY(-4px); box-shadow: 0 18px 50px rgba(0,0,0,0.13); }
+.gallery-item.video-item { background: linear-gradient(145deg,#12100e,#221d18); }
+.gallery-placeholder-icon { font-size: 2.4rem; opacity: 0.32; margin-bottom: 8px; }
+.gallery-placeholder-text {
+  font-family: var(--font-sub); font-size: 0.72rem; color: var(--text-muted);
+  letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.65;
+}
+.gallery-item.video-item .gallery-placeholder-icon { opacity: 0.55; color: #C9A84C; }
+.gallery-item.video-item .gallery-placeholder-text { color: #C9A84C; opacity: 0.75; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+
+/* ─── HOUSE FACTS ─── */
+.house-facts-card {
+  max-width: 600px; margin: 36px auto 0;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border-color);
+  border-radius: 26px; padding: 44px 38px;
+  box-shadow: 0 8px 44px rgba(0,0,0,0.06);
+  transition: background 0.6s, border-color 0.6s, box-shadow 0.6s;
+}
+.house-facts-emoji  { font-size: 3.2rem; margin-bottom: 12px; }
+.house-facts-title  { font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 6px; transition: color 0.6s; }
+.house-facts-founder {
+  font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-sub);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 24px;
+  transition: color 0.6s;
+}
+.house-facts-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 12px; }
+.house-facts-list li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 0.87rem; color: var(--text-muted); line-height: 1.65;
+  opacity: 0; transform: translateX(-10px);
+  transition: opacity 0.5s var(--ease-smooth), transform 0.5s var(--ease-smooth), color 0.6s;
+}
+.house-facts-list li.show { opacity: 1; transform: none; }
+.house-facts-list li::before { content: '✦'; color: var(--accent); flex-shrink: 0; margin-top: 2px; font-size: 0.75rem; transition: color 0.6s; }
+.house-change-btn {
+  background: transparent; border: 1.5px solid var(--border-color);
+  color: var(--text-muted); border-radius: 50px; padding: 9px 22px;
+  font-family: var(--font-sub); font-size: 0.76rem; cursor: pointer;
+  margin-top: 30px; letter-spacing: 0.08em;
+  transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s var(--ease-spring);
+}
+.house-change-btn:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: var(--accent-soft); transform: scale(1.04);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 52px 24px; text-align: center;
+  background: var(--bg-section-b);
+  border-top: 1px solid var(--border-color);
+  transition: background 0.6s, border-color 0.6s;
+}
+footer p { font-family: var(--font-sub); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.08em; line-height: 2.1; }
+.footer-accent { color: var(--accent); font-family: var(--font-heading); font-size: 1.1rem; }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 0.9s var(--ease-smooth), transform 0.9s var(--ease-smooth);
+  will-change: transform, opacity;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+
+/* ─── KEYFRAMES ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .house-grid        { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .countdown-card    { min-width: 80px; padding: 22px 14px; }
+  .scroll-visual     { padding: 40px 26px; }
+  .gallery-grid      { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .house-facts-card  { padding: 32px 24px; }
+  .video-player-wrap { border-radius: 16px; }
+  .section-wrap      { padding: 64px 18px; }
+  .vc-vol            { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── CANDLE LAYER ─── -->
+<div class="candle-layer" id="candleLayer"></div>
+
+<!-- ─── PATIENCE TOAST ─── -->
+<div class="patience-toast" id="patienceToast"></div>
+
+<!-- ─── HOUSE SELECTOR ─── -->
+<div id="houseSelectorOverlay">
+  <div class="selector-star-field" id="starField"></div>
+  <div class="selector-heading">
+    ✨ Welcome, Chosen Wizard ✨
+  </div>
+  <p class="selector-sub">The Sorting Hat must place you before you may enter<br>Sakshyyy's magical world</p>
+  <div class="house-grid">
+    <button class="house-btn btn-gryffindor" onclick="selectHouse('gryffindor')">
+      <span class="h-emoji">🦁</span>
+      <span class="h-name">Gryffindor</span>
+      <span class="h-words">Courage · Bravery · Nerve</span>
+    </button>
+    <button class="house-btn btn-slytherin" onclick="selectHouse('slytherin')">
+      <span class="h-emoji">🐍</span>
+      <span class="h-name">Slytherin</span>
+      <span class="h-words">Ambition · Cunning · Pride</span>
+    </button>
+    <button class="house-btn btn-ravenclaw" onclick="selectHouse('ravenclaw')">
+      <span class="h-emoji">🦅</span>
+      <span class="h-name">Ravenclaw</span>
+      <span class="h-words">Wisdom · Wit · Learning</span>
+    </button>
+    <button class="house-btn btn-hufflepuff" onclick="selectHouse('hufflepuff')">
+      <span class="h-emoji">🦡</span>
+      <span class="h-name">Hufflepuff</span>
+      <span class="h-words">Loyalty · Patience · Fairness</span>
+    </button>
+  </div>
+</div>
+
+<!-- ─── SORTING OVERLAY ─── -->
+<div id="sortingOverlay">
+  <div class="sorting-sparkles-row">
+    <span class="sort-sparkle">✨</span>
+    <span class="sort-sparkle">⭐</span>
+    <span class="sort-sparkle">✨</span>
+  </div>
+  <div class="sorting-hat-wrap">
+    <svg class="sorting-hat-svg" viewBox="0 0 220 265" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="110" cy="224" rx="96" ry="23" fill="#4a2e08"/>
+      <ellipse cx="110" cy="219" rx="93" ry="19" fill="#6e4618"/>
+      <path d="M110,32 C94,54 68,96 63,138 C58,172 53,200 49,220 C70,214 90,211 110,210 C130,211 150,214 171,220 C167,200 162,172 157,138 C152,96 126,54 110,32Z" fill="#5c3710"/>
+      <path d="M110,32 C100,58 81,104 77,142 C73,174 66,203 58,219 C79,214 95,212 110,211 C125,212 141,214 162,219 C154,203 147,174 143,142 C139,104 120,58 110,32Z" fill="#6e4416"/>
+      <path d="M108,32 C104,14 100,2 107,0 C114,0 117,10 114,30Z" fill="#4a2e08"/>
+      <path d="M78,148 Q90,140 102,148" stroke="#3a1e04" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <path d="M118,148 Q130,140 142,148" stroke="#3a1e04" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <path d="M86,178 Q110,195 134,178" stroke="#2e1600" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="90"  cy="157" rx="7.5" ry="5.5" fill="#2e1600"/>
+      <ellipse cx="130" cy="157" rx="7.5" ry="5.5" fill="#2e1600"/>
+      <ellipse cx="91"  cy="156" rx="2.5" ry="2"   fill="#fff" opacity="0.35"/>
+      <ellipse cx="131" cy="156" rx="2.5" ry="2"   fill="#fff" opacity="0.35"/>
+      <path d="M49,220 C70,214 90,211 110,210 C130,211 150,214 171,220" stroke="#3a2004" stroke-width="4.5" fill="none"/>
+      <path d="M153,184 L161,176 M158,184 L166,176" stroke="#3a2004" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div id="sortingText"></div>
+  <div id="sortingSubText"></div>
+  <button id="enterBtn" onclick="enterSite()">Enter the Magical World →</button>
+</div>
+
+<!-- ─── MAIN PAGE ─── -->
+<div class="page-content" id="mainPage" style="display:none">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-icon" id="heroIcon">🦉</div>
+    <div class="hero-eyebrow">A Most Extraordinary Invitation</div>
+    <h1 class="hero-title">Happy Birthday,<br><span class="name-accent">Sakshyyy</span> ✨</h1>
+    <p class="hero-subtitle">
+      Dear Chosen Wizard — you have been personally selected by the ancient owls of Hogwarts
+      to witness a truly magical celebration crafted in honour of the most wonderful
+      <strong>Sakshyyy</strong>. The enchantment begins now. 🦉
+    </p>
+    <div class="house-badge">
+      <span id="heroBadgeEmoji">🦁</span>
+      <span id="heroBadgeText">House Gryffindor · Chosen Wizard</span>
+    </div>
+  </section>
+
+  <div class="magic-divider">· · ✦ · ·</div>
+
+  <!-- COUNTDOWN -->
+  <section class="section-wrap white-bg reveal">
+    <div class="section-eyebrow">The Grand Celebration Approaches</div>
+    <h2 class="section-title" id="countdownTitle">Counting Down to Sakshyyy's Birthday</h2>
+    <p class="section-sub" id="countdownSub">The stars align, the candles float, and magic fills the air…</p>
+    <div class="countdown-grid" id="countdownGrid">
+      <div class="countdown-card reveal reveal-delay-1"><div class="countdown-number" id="cd-days">--</div><div class="countdown-label">Days</div></div>
+      <div class="countdown-card reveal reveal-delay-2"><div class="countdown-number" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
+      <div class="countdown-card reveal reveal-delay-1"><div class="countdown-number" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
+      <div class="countdown-card reveal reveal-delay-2"><div class="countdown-number" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
+    </div>
+    <div id="birthdayMsg" class="birthday-msg" style="display:none;margin-top:36px">
+      🎂 It's Sakshyyy's Birthday! 🎉 Accio Celebrations! 🎂
+    </div>
+  </section>
+
+  <div class="magic-divider">· · ✦ · ·</div>
+
+  <!-- LETTER -->
+  <section class="section-wrap grad-bg reveal">
+    <div class="section-eyebrow">Delivered by Hedwig</div>
+    <h2 class="section-title">A Letter From the Wizarding World</h2>
+    <p class="section-sub">Hedwig is en route from Hogwarts with a very special letter.<br>She arrives on <strong>June 25th</strong> — patience is a wizard's greatest virtue.</p>
+    <div class="hedwig-wrap"><span class="hedwig-fly" id="hedwigIcon">🦉</span></div>
+
+    <div class="letter-wrapper" id="letterWrapper" onclick="handleLetterClick()">
+      <div class="scroll-visual">
+        <div class="scroll-rod top"></div>
+        <div class="scroll-rod bottom"></div>
+
+        <div class="letter-locked-content" id="letterLocked">
+          <div class="letter-lock-icon">🔮</div>
+          <div class="letter-lock-title">Sealed by Magic</div>
+          <div class="letter-lock-desc">
+            Hedwig is still flying from Hogwarts.<br>
+            This enchanted letter unseals itself on<br>
+            <strong>June 25th, 2025</strong> — Sakshyyy's birthday.
+          </div>
+          <div class="letter-delivery-date">📅 &nbsp;Delivers on June 25, 2025</div>
+        </div>
+
+        <div class="letter-open-content" id="letterOpen">
+          <div class="letter-open-title">🦉 A Letter From Hedwig 🦉</div>
+          <!-- ✏️ CUSTOMISE THE LETTER CONTENT BELOW ✏️ -->
+          <div class="letter-body">Dear Sakshyyy,
+
+If you are reading this, the enchanted seal has finally broken — which means it is your birthday! 🎂
+
+You are one of the most magical souls I have ever had the honour of knowing. You carry warmth, courage and a spark that lights up every room you float into.
+
+May this year bring you all the adventures of the Forbidden Forest, all the warmth of a roaring common room fire, and all the mischief of the Weasley twins — but none of the detentions! 😄
+
+The wizarding world is a brighter, more wonderful place with you in it.
+
+With all the magic in my feathers,</div>
+          <div class="letter-signature">— Hedwig 🦉<br><span style="font-size:0.78rem;opacity:0.55">& the entire wizarding world</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="magic-divider">· · ✦ · ·</div>
+
+  <!-- LOCAL VIDEO PLAYER -->
+  <section class="section-wrap white-bg reveal">
+    <div class="section-eyebrow">Wizarding Memories</div>
+    <h2 class="section-title">The Enchanted Screen</h2>
+    <p class="section-sub">Upload a local video to play on the enchanted screen.</p>
+
+    <div class="video-player-wrap paused" id="videoWrap">
+<video id="mainVideo" preload="metadata">
+    <source src="birthday-main.mp4" type="video/mp4">
+</video>
+
+      <!-- Big play button -->
+      <div class="video-big-play" id="bigPlay" onclick="togglePlay()">
+        <div class="big-play-circle">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+
+      <!-- Custom controls -->
+      <div class="video-controls" id="videoControls">
+        <button class="vc-btn" id="playPauseBtn" onclick="togglePlay()" title="Play/Pause">
+          <svg id="playIcon"  viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+
+        <div class="vc-progress" id="progressBar" onclick="seekVideo(event)">
+          <div class="vc-progress-fill" id="progressFill"></div>
+        </div>
+
+        <span class="vc-time" id="timeDisplay">0:00 / 0:00</span>
+
+        <div class="vc-vol">
+          <button class="vc-btn" onclick="toggleMute()" id="muteBtn" title="Mute">
+            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          </button>
+          <input class="vc-vol-slider" id="volSlider" type="range" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
+        </div>
+
+        <button class="vc-btn" onclick="toggleFullscreen()" title="Fullscreen">
+          <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Drop zone -->
+    <div class="video-drop-zone" id="dropZone"
+      ondragover="handleDragOver(event)"
+      ondragleave="handleDragLeave(event)"
+      ondrop="handleDrop(event)"
+      onclick="document.getElementById('videoFileInput').click()">
+      <input type="file" id="videoFileInput" accept="video/*" onchange="loadLocalVideo(this)">
+      <div class="drop-icon">🎬</div>
+      <div class="drop-title">Drop a video here, or click to browse</div>
+      <div class="drop-sub">Supports MP4, MOV, WebM and most video formats.<br>Your file stays on your device — nothing is uploaded.</div>
+      <button class="drop-btn" onclick="event.stopPropagation();document.getElementById('videoFileInput').click()">Choose Video File</button>
+      <div class="video-filename" id="videoFilename"></div>
+    </div>
+  </section>
+
+  <div class="magic-divider">· · ✦ · ·</div>
+
+  <!-- GALLERY -->
+  <section class="section-wrap alt-bg reveal">
+    <div class="section-eyebrow">Magical Memories</div>
+    <h2 class="section-title">The Photo Album</h2>
+    <p class="section-sub">Replace the placeholders in the code with real image paths or URLs.</p>
+    <div class="gallery-grid">
+      <!-- ✏️ Replace each .gallery-item div with <div class="gallery-item"><img src="your.jpg"></div> -->
+      <div class="gallery-item reveal reveal-delay-1">
+  <img src="photo1.jpg" alt="Photo 1">
+</div>
+      <div class="gallery-item reveal reveal-delay-2">
+  <img src="photo2.jpg" alt="Photo 2">
+</div>
+<div class="gallery-item video-item reveal reveal-delay-3">
+  <video controls width="100%" height="100%">
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+</div>
+      <div class="gallery-item reveal reveal-delay-3">
+  <img src="photo3.jpg" alt="Photo 3">
+</div>
+<div class="gallery-item reveal reveal-delay-4">
+  <img src="photo4.jpg" alt="Photo 4">
+</div>
+<div class="gallery-item video-item reveal reveal-delay-3">
+  <video controls width="100%" height="100%">
+    <source src="video2.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="gallery-item reveal reveal-delay-5">
+  <img src="photo5.jpg" alt="Photo 5">
+</div>
+<div class="gallery-item reveal reveal-delay-6">
+  <img src="photo6.jpg" alt="Photo 6">
+</div>
+    </div>
+  </section>
+
+  <div class="magic-divider">· · ✦ · ·</div>
+
+  <!-- HOUSE FACTS -->
+  <section class="section-wrap white-bg reveal">
+    <div class="section-eyebrow">Your Magical House</div>
+    <h2 class="section-title">The Sorting Hat's Wisdom</h2>
+    <div class="house-facts-card">
+      <div class="house-facts-emoji"  id="houseFactsEmoji">🦁 🦁</div>
+      <div class="house-facts-title"  id="houseFactsTitle">House Gryffindor</div>
+      <div class="house-facts-founder" id="houseFactsFounder">Founded by Godric Gryffindor · Colours: Scarlet & Gold</div>
+      <ul class="house-facts-list" id="houseFactsList"></ul>
+      <button class="house-change-btn" onclick="showHouseSelector()">✦ Change My House</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-accent" id="footerText">✨ Happy Birthday, Sakshyyy ✨</p>
+    <p style="margin-top:10px">Crafted with magic & love · June 25, 2025</p>
+    <p style="margin-top:6px;opacity:0.45">🦉 Delivered by the Owlery of Hogwarts · Est. 990 AD</p>
+  </footer>
+
+</div><!-- /page-content -->
+
+<script>
+/* ══════════════════════════════════════════
+   HOUSE DATA
+══════════════════════════════════════════ */
+const HOUSES = {
+  gryffindor: {
+    key:'gryffindor', name:'Gryffindor', emoji:'🦁', cssClass:'house-gryffindor',
+    badge:'House Gryffindor · Chosen Wizard',
+    founder:'Founded by Godric Gryffindor · Colours: Scarlet & Gold',
+    traits:'Courageous · Brave · Chivalrous',
+    sortingLine:'You have the heart of a lion. Gryffindor! 🦁',
+    facts:[
+      'Gryffindor values courage, bravery, nerve, and chivalry above all else.',
+      'Famous alumni include Harry Potter, Hermione Granger, and Albus Dumbledore.',
+      'Their common room in Gryffindor Tower is reached through the portrait of the Fat Lady.',
+      'Their house ghost is Nearly Headless Nick — Sir Nicholas de Mimsy-Porpington.',
+      'Gryffindors do what is right, even when it is incredibly hard.',
+    ]
+  },
+  slytherin: {
+    key:'slytherin', name:'Slytherin', emoji:'🐍', cssClass:'house-slytherin',
+    badge:'House Slytherin · Chosen Wizard',
+    founder:'Founded by Salazar Slytherin · Colours: Emerald & Silver',
+    traits:'Ambitious · Cunning · Resourceful',
+    sortingLine:'I see greatness in you — Slytherin! 🐍',
+    facts:[
+      'Slytherin values ambition, cunning, resourcefulness, and strong leadership.',
+      'Famous alumni include Merlin himself, Severus Snape, and Horace Slughorn.',
+      'Their common room lies in a dungeon beneath the Black Lake — hauntingly beautiful.',
+      'Their house ghost is the Bloody Baron — the only ghost Peeves fears.',
+      'Slytherins possess extraordinary determination to achieve their goals.',
+    ]
+  },
+  ravenclaw: {
+    key:'ravenclaw', name:'Ravenclaw', emoji:'🦅', cssClass:'house-ravenclaw',
+    badge:'House Ravenclaw · Chosen Wizard',
+    founder:'Founded by Rowena Ravenclaw · Colours: Blue & Bronze',
+    traits:'Wise · Witty · Creative',
+    sortingLine:'A mind sharp as an eagle\'s talon — Ravenclaw! 🦅',
+    facts:[
+      'Ravenclaw prizes wit, wisdom, creativity, and a genuine thirst for knowledge.',
+      'Famous alumni include Luna Lovegood, Filius Flitwick, and Gilderoy Lockhart.',
+      'Ravenclaw Tower has a riddle-knocker instead of a password — only the wise may enter.',
+      'Their house ghost is the Grey Lady — Helena Ravenclaw, daughter of the founder.',
+      'Ravenclaws are known for original, inventive thinking that goes beyond convention.',
+    ]
+  },
+  hufflepuff: {
+    key:'hufflepuff', name:'Hufflepuff', emoji:'🦡', cssClass:'house-hufflepuff',
+    badge:'House Hufflepuff · Chosen Wizard',
+    founder:'Founded by Helga Hufflepuff · Colours: Yellow & Black',
+    traits:'Loyal · Patient · Fair',
+    sortingLine:'True of heart and kind of spirit — Hufflepuff! 🦡',
+    facts:[
+      'Hufflepuff values hard work, patience, loyalty, and a deep sense of fair play.',
+      'Famous alumni include Newt Scamander, Nymphadora Tonks, and Cedric Diggory.',
+      'Their cosy common room near the kitchens always smells of warm bread.',
+      'Their house ghost is the Fat Friar — cheerful, welcoming, and eternally good-natured.',
+      'Hufflepuff has produced the fewest Dark wizards of any house — a remarkable distinction.',
+    ]
+  }
+};
+
+let currentHouse = null;
+let patienceCount = 0;
+let patienceTimer = null;
+
+/* ══════════════════════════════════════════
+   STAR FIELD
+══════════════════════════════════════════ */
+(function buildStars() {
+  const sf = document.getElementById('starField');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'selector-star';
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;
+      --dur:${2+Math.random()*4}s;--op:${0.15+Math.random()*0.55};
+      animation-delay:${Math.random()*4}s`;
+    sf.appendChild(s);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   BIRTHDAY CHECK
+══════════════════════════════════════════ */
+function isBirthday() {
+  const n = new Date();
+  return n >= new Date(n.getFullYear(), 5, 25); // June 25
+}
+
+/* ══════════════════════════════════════════
+   LETTER
+══════════════════════════════════════════ */
+function handleLetterClick() {
+  if (isBirthday()) {
+    document.getElementById('letterLocked').style.display = 'none';
+    document.getElementById('letterOpen').style.display   = 'block';
+    document.getElementById('hedwigIcon').textContent     = '🎉';
+  } else {
+    const msgs = [
+      '🦉 "Have some patience, Hermione!" — The Sorting Hat',
+      '📜 The seal holds firm. Hedwig isn\'t done flying yet!',
+      '🔮 Accio Letter! …it won\'t work until June 25th.',
+      '✨ "Not until the birthday, young wizard." — Dumbledore',
+      '🦉 Hedwig squawks disapprovingly. Wait for June 25th!',
+    ];
+    showToast(msgs[Math.min(patienceCount, msgs.length - 1)]);
+    patienceCount++;
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('patienceToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(patienceTimer);
+  patienceTimer = setTimeout(() => t.classList.remove('show'), 3400);
+}
+
+/* ══════════════════════════════════════════
+   HOUSE SELECTION
+══════════════════════════════════════════ */
+function selectHouse(key) {
+  currentHouse = HOUSES[key];
+  document.getElementById('houseSelectorOverlay').style.display = 'none';
+
+  const overlay  = document.getElementById('sortingOverlay');
+  const hatText  = document.getElementById('sortingText');
+  const hatSub   = document.getElementById('sortingSubText');
+  const enterBtn = document.getElementById('enterBtn');
+
+  overlay.style.display = 'flex';
+  hatText.textContent   = '';
+  hatSub.classList.remove('show');
+  enterBtn.classList.remove('show');
+
+  // Typewriter
+  const full = `The Sorting Hat has spoken — ${currentHouse.sortingLine}`;
+  let i = 0;
+  setTimeout(() => {
+    const iv = setInterval(() => {
+      hatText.textContent += full[i++];
+      if (i >= full.length) {
+        clearInterval(iv);
+        setTimeout(() => {
+          hatSub.textContent = `"${currentHouse.traits}" — May your time in ${currentHouse.name} be filled with wonder.`;
+          hatSub.classList.add('show');
+        }, 300);
+        setTimeout(() => enterBtn.classList.add('show'), 700);
+      }
+    }, 38);
+  }, 900);
+}
+
+function enterSite() {
+  document.getElementById('sortingOverlay').style.display = 'none';
+  document.getElementById('mainPage').style.display = 'block';
+  applyHouseTheme();
+  startCountdown();
+  if (isBirthday()) checkLetterOpen();
+  startReveal();
+  spawnCandles();
+  spawnMouseSparkles();
+}
+
+function showHouseSelector() {
+  document.getElementById('houseSelectorOverlay').style.display = 'flex';
+  document.getElementById('mainPage').style.display = 'none';
+}
+
+/* ══════════════════════════════════════════
+   HOUSE THEME
+══════════════════════════════════════════ */
+function applyHouseTheme() {
+  if (!currentHouse) return;
+  // Body class
+  document.body.className = currentHouse.cssClass;
+
+  // Hero
+  document.getElementById('heroIcon').textContent      = currentHouse.emoji;
+  document.getElementById('heroBadgeEmoji').textContent = currentHouse.emoji;
+  document.getElementById('heroBadgeText').textContent  = currentHouse.badge;
+
+  // House facts
+  document.getElementById('houseFactsEmoji').textContent   = currentHouse.emoji + ' ' + currentHouse.emoji;
+  document.getElementById('houseFactsTitle').textContent   = 'House ' + currentHouse.name;
+  document.getElementById('houseFactsFounder').textContent = currentHouse.founder;
+
+  const ul = document.getElementById('houseFactsList');
+  ul.innerHTML = '';
+  currentHouse.facts.forEach((f, idx) => {
+    const li = document.createElement('li');
+    li.textContent = f;
+    ul.appendChild(li);
+    setTimeout(() => li.classList.add('show'), 400 + idx * 120);
+  });
+
+  // Footer
+  document.getElementById('footerText').textContent =
+    `${currentHouse.emoji} Happy Birthday, Sakshyyy ${currentHouse.emoji}`;
+}
+
+/* ══════════════════════════════════════════
+   COUNTDOWN
+══════════════════════════════════════════ */
+function startCountdown() { tick(); setInterval(tick, 1000); }
+
+function tick() {
+  const now  = new Date();
+  const year = now.getFullYear();
+  let target = new Date(year, 5, 25, 0, 0, 0);
+  if (now >= target) target = new Date(year + 1, 5, 25, 0, 0, 0);
+
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('countdownGrid').style.display = 'none';
+    document.getElementById('birthdayMsg').style.display   = 'block';
+    document.getElementById('countdownTitle').textContent  = "🎂 It's Sakshyyy's Birthday! 🎂";
+    document.getElementById('countdownSub').textContent    = "The magic is at its peak today! Accio celebrations!";
+    return;
+  }
+  const pad = n => String(n).padStart(2,'0');
+  document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+  document.getElementById('cd-hours').textContent = pad(Math.floor(diff % 86400000 / 3600000));
+  document.getElementById('cd-mins').textContent  = pad(Math.floor(diff % 3600000  / 60000));
+  document.getElementById('cd-secs').textContent  = pad(Math.floor(diff % 60000    / 1000));
+}
+
+function checkLetterOpen() {
+  document.getElementById('letterLocked').style.display = 'none';
+  document.getElementById('letterOpen').style.display   = 'block';
+}
+
+/* ══════════════════════════════════════════
+   LOCAL VIDEO PLAYER
+══════════════════════════════════════════ */
+const video    = document.getElementById('mainVideo');
+const wrap     = document.getElementById('videoWrap');
+const progFill = document.getElementById('progressFill');
+const timeDisp = document.getElementById('timeDisplay');
+const playIcon  = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
+
+function loadLocalVideo(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  video.src = url;
+  video.load();
+  wrap.classList.add('paused');
+  document.getElementById('videoFilename').textContent = '🎬 ' + file.name;
+  document.getElementById('videoFilename').classList.add('show');
+}
+
+function handleDragOver(e) { e.preventDefault(); document.getElementById('dropZone').classList.add('drag-over'); }
+function handleDragLeave(e) { document.getElementById('dropZone').classList.remove('drag-over'); }
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('dropZone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('video/')) {
+    const dt = new DataTransfer(); dt.items.add(file);
+    const inp = document.getElementById('videoFileInput');
+    inp.files = dt.files;
+    loadLocalVideo(inp);
+  }
+}
+
+function togglePlay() {
+  if (!video.src) return;
+  if (video.paused) {
+    video.play();
+    wrap.classList.remove('paused');
+    playIcon.style.display  = 'none';
+    pauseIcon.style.display = 'block';
+  } else {
+    video.pause();
+    wrap.classList.add('paused');
+    playIcon.style.display  = 'block';
+    pauseIcon.style.display = 'none';
+  }
+}
+
+function toggleMute() { video.muted = !video.muted; }
+
+function setVolume(v) { video.volume = parseFloat(v); video.muted = false; }
+
+function seekVideo(e) {
+  if (!video.duration) return;
+  const bar = document.getElementById('progressBar');
+  const pct = (e.offsetX / bar.offsetWidth);
+  video.currentTime = pct * video.duration;
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) wrap.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+
+function fmtTime(s) {
+  if (!s || isNaN(s)) return '0:00';
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return `${m}:${String(sec).padStart(2,'0')}`;
+}
+
+video.addEventListener('timeupdate', () => {
+  if (!video.duration) return;
+  const pct = (video.currentTime / video.duration) * 100;
+  progFill.style.width = pct + '%';
+  timeDisp.textContent = `${fmtTime(video.currentTime)} / ${fmtTime(video.duration)}`;
+});
+
+video.addEventListener('ended', () => {
+  wrap.classList.add('paused');
+  playIcon.style.display  = 'block';
+  pauseIcon.style.display = 'none';
+  progFill.style.width = '0%';
+});
+
+video.addEventListener('click', togglePlay);
+
+/* ══════════════════════════════════════════
+   FLOATING CANDLES
+══════════════════════════════════════════ */
+function spawnCandles() {
+  const layer = document.getElementById('candleLayer');
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => makeCandle(layer), i * 420 + Math.random() * 180);
+  }
+  setInterval(() => makeCandle(layer), 1900);
+}
+
+function makeCandle(layer) {
+  const c       = document.createElement('div');
+  c.className   = 'candle';
+  c.innerHTML   = `<div class="candle-flame"></div><div class="candle-body"></div>`;
+  const left    = 1 + Math.random() * 98;
+  const dur     = 13 + Math.random() * 14;
+  const delay   = Math.random() * 2.5;
+  const drift   = (Math.random() - 0.5) * 70;
+  c.style.cssText = `left:${left}%;animation-duration:${dur}s;animation-delay:${delay}s;--drift:${drift}px`;
+  layer.appendChild(c);
+  setTimeout(() => c.remove(), (dur + delay + 1) * 1000);
+}
+
+/* ══════════════════════════════════════════
+   MOUSE SPARKLES
+══════════════════════════════════════════ */
+function spawnMouseSparkles() {
+  document.addEventListener('mousemove', e => {
+    if (Math.random() > 0.12) return;
+    const s   = document.createElement('div');
+    s.className = 'sparkle';
+    const sz  = 8 + Math.random() * 14;
+    s.style.cssText = `left:${e.clientX - 6}px;top:${e.clientY - 6}px;--sz:${sz}px`;
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1900);
+  });
+}
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL (IntersectionObserver)
+══════════════════════════════════════════ */
+function startReveal() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target); // fire once
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+</script>
+</body>
+</html>
